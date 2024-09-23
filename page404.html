@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.container {
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+    font-size: 10rem;
+    color: #ff6f61;
+    letter-spacing: 10px;
+    animation: bounce 2s infinite;
+}
+
+p {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.back-btn:hover {
+    background-color: #ff4b47;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <p>Oops! The page you're looking for can't be found.</p>
+        <p style="margin-left:30px;margin-right: 30px;">"Missed the mark? Perhaps a deeper search for the tale of betrayal will reveal the truth."</p>
+        <a href="/" class="back-btn">Go Back Home</a>
+    </div>
+</body>
+</html>

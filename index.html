@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veronica's Movies - IMDb</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f8c600;
+            padding: 10px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 20px;
+        }
+        .movie-tile {
+            background-color: white;
+            width: 30%;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .movie-tile img {
+            width: 100%;
+            height: auto;
+        }
+        .movie-tile h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .movie-tile:hover {
+            transform: scale(1.05);
+        }
+        .dropdown {
+            float: right;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Veronica's Movies on IMDb</h1>
+    </header>
+    .
+    <div class="container">
+        <!-- Sort by dropdown -->
+        
+
+        <!-- Movies List -->
+        <div class="movie-list" id="movieList">
+            <!-- Movie Tiles (11 in total) -->
+            <div class="movie-tile" id="tile1">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/1.png" alt="Movie Poster 1">
+                    <h2>Abyss of Deceptions (2030)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile2">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/2.png" alt="Movie Poster 1">
+                    <h2>Strings  of Solitude (2030)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile3">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/3.png" alt="Movie Poster 1">
+                    <h2>Shattered Illusions (2018)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile4">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/4.png" alt="Movie Poster 1">
+                    <h2>Demon (2020)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile5">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/5.png" alt="Movie Poster 1">
+                    <h2>Highway (2022)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile6">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/6.png" alt="Movie Poster 1">
+                    <h2>Stallion (2017)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile7">
+                <a href="betrayal.html">
+                    <img src="/THE BETRAYU/7.png" alt="Movie Poster 1">
+                    <h2>The Betrayal (2023)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile8">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/8.png" alt="Movie Poster 1">
+                    <h2>Scream on Screen (2030)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile9">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/9.png" alt="Movie Poster 1">
+                    <h2>Fight (2021)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile10">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/10.png" alt="Movie Poster 1">
+                    <h2>The Train of Love (2015)</h2>
+                </a>
+            </div>
+
+            <div class="movie-tile" id="tile11">
+                <a href="page404.html">
+                    <img src="/THE BETRAYU/11.png" alt="Movie Poster 1">
+                    <h2>Musique Mayhem (2030)</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sortMovies() {
+            let dropdown = document.getElementById('sort');
+            let movieList = document.getElementById('movieList');
+            let tiles = Array.from(movieList.children);
+
+            // Sort by popularity (The Betrayal to the top)
+            if (dropdown.value === 'popularity') {
+                tiles.sort((a, b) => a.id === 'tile1' ? -1 : 1);
+            }
+
+            // Sort by latest (year comparison)
+            if (dropdown.value === 'latest') {
+                tiles.sort((a, b) => {
+                    let years = {
+                        'tile1': 2021, 'tile2': 2019, 'tile3': 2018, 'tile4': 2020, 
+                        'tile5': 2022, 'tile6': 2017, 'tile7': 2020, 'tile8': 2016,
+                        'tile9': 2021, 'tile10': 2015, 'tile11': 2018
+                    };
+                    return years[b.id] - years[a.id];
+                });
+            }
+
+            // Sort alphabetically (A-Z)
+            if (dropdown.value === 'alphabetic') {
+                tiles.sort((a, b) => a.querySelector('h2').innerText.localeCompare(b.querySelector('h2').innerText));
+            }
+
+            // Re-attach sorted tiles to the movie list
+            tiles.forEach(tile => movieList.appendChild(tile));
+        }
+    </script>
+</body>
+</html>
