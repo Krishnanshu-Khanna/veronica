@@ -7,7 +7,8 @@
 		<link rel="icon" href="THE BETRAYU/favicon.jpg" type="image/png" />
 		<style>
 			body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
 				background-color: #f5f5f5;
 				color: #333;
 				margin: 0;
@@ -26,7 +27,7 @@
 				flex-direction: row;
 				justify-content: space-evenly;
 				align-items: center;
-                z-index: 99999;
+				z-index: 99999;
 			}
 
 			header h1 {
@@ -120,6 +121,8 @@
 				height: auto;
 				margin-top: 10px;
 			}
+			header h1 {
+			}
 		</style>
 	</head>
 	<body>
@@ -133,8 +136,8 @@
 			<div class="dropdown">
 				<label for="sort">Sort by: </label>
 				<select id="sort" onchange="sortMovies()">
-					<option value="popularity">Popularity</option>
 					<option value="latest">Latest</option>
+					<option value="popularity">Popularity</option>
 					<option value="alphabetic">A-Z</option>
 				</select>
 			</div>
@@ -187,7 +190,7 @@
 				<div class="movie-tile" id="tile7">
 					<a href="betrayal.html">
 						<img src="THE BETRAYU/7.png" alt="Movie Poster 7" />
-						<h2>The Betrayal (2023)</h2>
+						<h2>Betrayal (2023)</h2>
 					</a>
 				</div>
 
@@ -227,9 +230,18 @@
 				let movieList = document.getElementById("movieList");
 				let tiles = Array.from(movieList.children);
 
-				// Sort by popularity (The Betrayal to the top)
+				// Sort by popularity (The Betrayal to the third position)
 				if (dropdown.value === "popularity") {
-					tiles.sort((a, b) => (a.id === "tile7" ? -1 : 1));
+					tiles.sort((a, b) => {
+						if (a.id === "tile7") return 1; // Betrayal should be 3rd
+						if (b.id === "tile7") return -1;
+						return a.id.localeCompare(b.id); // Default sorting order for others
+					});
+
+					// Move Betrayal (tile7) to the third position
+					let betrayalTile = tiles.find((tile) => tile.id === "tile7");
+					tiles = tiles.filter((tile) => tile.id !== "tile7"); // Remove Betrayal from original position
+					tiles.splice(2, 0, betrayalTile); // Insert Betrayal at index 2 (third position)
 				}
 
 				// Sort by latest (year comparison)
